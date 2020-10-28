@@ -37,3 +37,33 @@ function load(url){
 load('https://school.coders-x.com/courses/5b8a1d261a383514ba715fc8/lessons/5b8a22ca1a383514ba715ff6').then(function(body){
   console.log('Done',body);
 });
+
+
+/**
+ * Sử dụng Promise.all + axios để tải về 3 đường link sau cùng lúc và hiển thị ra kết quả:
+ * https://jsonplaceholder.typicode.com/todos/1
+ * https://jsonplaceholder.typicode.com/todos/2
+ * https://jsonplaceholder.typicode.com/todos/3
+ */
+
+
+var axios=require('axios');
+function readData(link){
+  return new Promise(function(resolve,reject){
+     axios.get(link).then(function(response){
+    resolve(response.data);
+  }).catch(function(err){
+    reject(err);
+  });
+  });
+}
+
+Promise.all([
+  readData('https://jsonplaceholder.typicode.com/todos/1'),
+  readData('https://jsonplaceholder.typicode.com/todos/2'),
+  readData('https://jsonplaceholder.typicode.com/todos/3')
+]).then(function(data){
+  console.log(data);
+}).catch(err=>{
+  console.log(err);
+});

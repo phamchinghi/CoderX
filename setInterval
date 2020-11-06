@@ -1,1 +1,21 @@
+/**
+ * Viết hàm countDown đếm ngược từ x về 0, mỗi lần đếm cách nhau 1s, sau đó hiển thị 'Happy new year'
+ */
+function countDown(x) {
+  var i = x;
+  var happy = setInterval(function(){
+      i--;
+      console.log(i);
+      if(i === 0){
+        clearInterval(happy);
+        console.log('Happy new year');
+      }
+  }, 1000)
+  //  console.log('Happy new year');   để ở dưới này sẽ chạy trước khi countdown
+}
+
+countDown(5);
+
+
+
 

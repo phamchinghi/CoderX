@@ -1,0 +1,33 @@
+// Bài 1
+
+// Viết hàm đảo ngược chuỗi
+// Example
+// reverse('abc') // 'cba'
+function reverse(str) {
+  // viết code ở đây.
+  var string = str.split("");
+  var arrStr = string.reverse();
+  return arrStr.join("");
+}
+
+// Bài 3
+
+// Viết hàm lấy extension của một file
+// Example
+// getExtensionFilename("abc.mp3") // "mp3"
+
+function getExtensionFilename(filename) {
+  // viết code ở đây.
+  var arrStr = filename.split(".");
+  
+  return arrStr[arrStr.length-1];
+}
+
+
+// Bài 4
+
+// viết hàm lấy ra giá trị lớn nhất trong 3 số nhập vào
+function findMax(a,b,c){
+// viết code ở đây.
+return (a>b)? (a>c)? a: c : (b>c)? b:c;
+}

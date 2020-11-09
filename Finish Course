@@ -9,7 +9,22 @@ function reverse(str) {
   var arrStr = string.reverse();
   return arrStr.join("");
 }
+// Bài 2
 
+// Viết hàm để viết hoa chữ cái đầu của từng từ trong câu
+// Example
+// capitalize("abc") // "Abc"
+function capitalize(str) {
+	// viết code ở đây
+	var strArr = str.split(" ");
+	for(var i =0 ;i< strArr.length; i++){
+	var charArr = strArr[i].split("");
+	    charArr[0] = charArr[0].toUpperCase();
+	strArr[i] = charArr.join("");
+	}
+	return strArr.join(" ");
+}
+    
 // Bài 3
 
 // Viết hàm lấy extension của một file
@@ -31,3 +46,15 @@ function findMax(a,b,c){
 // viết code ở đây.
 return (a>b)? (a>c)? a: c : (b>c)? b:c;
 }
+
+
+//Bài 5
+
+function startWith(str){
+  // viết code ở đây.
+  return (str.indexOf("Java")) === 0;
+}
+
+// Bài 6
+
+

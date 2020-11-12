@@ -128,7 +128,25 @@ function first(array, n) {
 
 //Bài 9
 
-
+//Viết function omitCharAt  trả về chuỗi đã được loại bỏ ký tại vị trí n bất kỳ
+//Lưu ý cho chuỗi 'abcd' :
+// 		element    'a'|'b'|'c'|'d'
+//		index 	    0	|	1	|	2	|	3
+//  n = 1 ------------------- 'acd'
+//  n = 2 ------------------- 'abd'
+function omitCharAt(str, n) {
+  // viết code ở đây.	
+  if (n < 0 || n > str.length - 1) {
+    return str;
+  } else {
+    var strArr = str.split("");
+    for (var i = n; i < strArr.length - 1; i++) {
+      strArr[i] = strArr[i + 1];
+    }
+    strArr[strArr.length - 1] = "";
+    return strArr.join("");
+  }
+}
 
 //Bài 10
 
@@ -160,4 +178,73 @@ function checkInt(number1, number2) {
   }else{
       return false;
   }
+}
+
+// Bài 12
+
+/*
+Viết một hàm JavaScript có 1 tham số n trả về tuyệt đối của hiệu só đó và 13, 
+nếu số đó lớn hơn 13 trả về gấp đôi tuyệt đối của hiệu 2 số.
+Example: 
+n = 20 // return 14
+n = 5 // return 8
+
+*/
+function difference(n) {
+  // viết code ở đây.
+  if(Math.abs(n) < 13){
+    return Math.abs(n-13);   
+  }else{
+    return Math.abs((n-13))*2;
+  }
+}
+
+//Bài 13
+
+/* Viết hàm pyString để tạo chuỗi mới thêm "Py" trước chuỗi nhập vào. 
+Nếu chuỗi đã cho đã bắt đầu bằng "Py" thì hãy trả về chuỗi gốc (không cần thêm).
+Tham số:
+- String: chuỗi nhập vào lúc đầu.
+*/
+
+function pyString(String) {
+  // viết code ở đây.
+  if(String.indexOf("Py")===0){
+      return String;
+  }else{
+      return "Py" + String;
+  }
+}
+
+
+// Bài 14
+
+/* Viết hàm toNextChar dùng để thay thế mọi ký tự trong một chuỗi 
+thành ký tự theo sau nó trong bảng chữ cái. Ví dụ: "Hello" chuyển thành "Ifmmp"
+// Tham số:
+// - String: chuỗi nhập vào ban đầu.
+*/
+function toNextChar(str) {
+  // viết code ở đây.	
+  var strArr = str.split("");
+  for(var i =0 ;i<str.length;i++){
+      strArr[i]= String.fromCharCode(str.charCodeAt(i)+1);
+  }
+  return strArr.join("");
+}
+
+// Bài 15
+
+// viết hàm tạo mới một 1 string từ n ký tự từ vị trí đầu và cuối của chuỗi cũ
+// newString("1wyg5yhd45", 2) // "1w45"
+function newString(str, n) {
+  // viết code ở đây.
+  var arr = [];
+  for (var i = 0; i < n; i++) {
+    arr.push(str.charAt(i)); //duyet trai qua
+  }
+  for (var i = str.length - n; i < str.length; i++) {
+    arr.push(str.charAt(i)); //duyet phai qua
+  }
+  return arr.join("");
 }

@@ -248,3 +248,153 @@ function newString(str, n) {
   }
   return arr.join("");
 }
+
+
+// Bài 16
+
+/* Write a function that splits an array (first argument) into groups 
+the length of size(second argument) and returns them as a two-dimensional array.
+Example
+ chunkArrayInGroups(["a", "b", "c", "d", "e"], 2) // [["a", "b"], ["c", "d"], ["e"]]
+*/
+function chunkArrayInGroups(arr, size) {
+  // write code here.
+  var temp = [],j = 1,
+    result = [];
+  for (var i = 0; i < arr.length; i++) {
+      if (j <= size) {
+        temp.push(arr[i]);//kiem tra xem co giong vs size khong thi them vao arr tam
+        j++;
+      }
+      if (j > size || i == arr.length - 1) {
+        j = 1;
+        result.push(temp);//het mang thi them vao cai ket qua roi xuat ra thoi
+        temp = [];
+      }
+    }
+  return result;
+}
+
+// Bài 17
+
+/* Write a function return maximum possible sum of some of its k consecutive numbers 
+(numbers that follow each other in order.) of a given array of positive integers
+*/
+function maxOfSumChain(arr, k) {
+  // write code here.
+  var sum = 0,
+    max = 0;
+  for (var i = 0; i < arr.length; i++) {
+    for (var j = i; j < i + k; j++) {
+      max += arr[j];
+    }
+    if (sum < max)
+      sum = max;
+    max = 0;
+  }
+  return sum;
+}
+
+// Bài 18
+
+/* Hãy viết một hàm để tìm một số có số lần lặp lại nhiều nhất trong một dãy các số nguyên.
+
+Input: dãy số
+Output: 1 dãy số bao gồm các số có số lần lặp lại nhiều nhất
+
+ví dụ:
+Input: [1,2,3,4,1,2,2,1]
+Output: [1,2]*/
+function findMostFrequent(arr) {
+  // Viết code tại đây!
+  var result = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  for (var i = 0; i < arr.length; i++) {
+    result[arr[i]] = result[arr[i]] + 1;
+  }
+  var max = 0,
+    kq = [];
+  for (var i = 0; i < result.length; i++) {
+    if (result[i] != NaN) {
+      if (max < result[i]) {
+        max = result[i];
+      }
+    }
+  }
+  for (var i = 0; i < result.length; i++) {
+    if (result[i] != NaN) {
+      if (max == result[i]) {
+        kq.push(i);
+      }
+    }
+  }
+  return kq;
+}
+
+
+// Bài 19
+
+/*
+Hãy viết một hàm để kiểm tra xem có thể sắp xếp các kí tự 
+của 1 chuỗi String cho trước thành 1 chuỗi String cho trước khác không?
+
+Input: 2 chuỗi String
+Output: True hoặc False
+
+ví dụ:
+
+Input: abc cba
+Output: True
+
+Input: abx abb
+Output: False
+*/
+function rearrangeChar(str1, str2) {
+  // Viết code tại đây!
+  var dem1 = [],
+    dem2 = [];
+  if (str1.length != str2.length)
+    return false;
+  for (var i = 0; i <= 26; i++) {
+    dem1[i] = 0;
+    dem2[i] = 0;
+  }
+  for (var i = 0; i < str1.length; i++) {
+    dem1[str1.charCodeAt(i) - 97]++;
+    dem2[str2.charCodeAt(i) - 97]++;
+  }
+  for (var i = 0; i <= 26; i++) {
+    if (dem1[i] != dem2[i])
+      return false;
+  }
+  return true;
+}
+
+
+// Bài 20
+
+/*
+Hãy viết một hàm để tìm giá trị lớn nhất có thể đạt được 
+của hiệu 2 số bất kì trong dãy số
+
+Input: là một dãy số.
+Output: giá trị lớn nhất có thể đạt được của hiệu 2 số bất kì trong dãy số.
+
+Ví dụ:
+
+Input: [1, 2, 3, 8, 9]
+Output: 8 (là hiệu của 9 và 1)
+
+*/
+
+function findmaxDiff(arr){
+  // Viết code tại đây
+  var max = 0;
+  for(var i =0;i<arr.length-1;i++){
+      for(var j = i+1;j<arr.length;j++){
+          if(max < Math.abs(arr[i]-arr[j])){
+              max = Math.abs(arr[i]-arr[j]);
+          }
+      }
+  }
+  return max;
+}
